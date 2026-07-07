@@ -1,0 +1,31 @@
+sur:
+  pousser:
+    branches :
+      - principal
+  demande de fusion :
+    branches :
+      - principal
+
+emplois :
+  construire:
+
+    fonctionne sous : ubuntu-latest
+
+    stratégie:
+      matrice:
+        version de Node : [20.x]
+
+    mesures:
+    - nom : Dépôt de vérification
+      utilisations : actions/checkout@v3
+
+    - nom : Configurer Node.js
+      utilise : actions/setup-node@v3
+      avec:
+        version de Node : ${{ matrix.node-version }}
+
+    - nom : Installer les dépendances
+      exécuter : npm install
+
+    - nom : Démarrer l'application
+      exécuter : npm start
